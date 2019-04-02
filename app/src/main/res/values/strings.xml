@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DoeSimples</string>
+    <string name="usuario">Usuário</string>
+    <string name="senha">Senha</string>
+    <string name="welcome_string">Doe Simples</string>
+    <string name="login">Faça Login</string>
+</resources>
