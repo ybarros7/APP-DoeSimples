@@ -2,6 +2,11 @@
     <string name="app_name">DoeSimples</string>
     <string name="usuario">Usuário</string>
     <string name="senha">Senha</string>
-    <string name="welcome_string">Doe Simples</string>
-    <string name="login">Faça Login</string>
+    <string name="welcome_string">Bem Vindo ao Doe Simples</string>
+    <string name="login">Login</string>
+    <string name="text_lista_inst_oi">Olá!</string>
+    <string name="action_buscar">Buscar</string>
+    <string name="action_atualizar">Atualizar</string>
+    <string name="action_config">Configurações</string>
+    <string name="action_sair">Sair</string>
 </resources>
