@@ -61,12 +61,12 @@ class ListaInstituicoesActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item?.itemId
 
-        if (id == R.id.action_buscar) {
-            Toast.makeText(this, "", Toast.LENGTH_LONG).show()
-        } else if (id == R.id.action_atualizar) {
+        if (id == R.id.action_atualizar) {
             fakeDialog()
         } else if (id == R.id.action_config) {
-            Toast.makeText(this, "Clicou configuracoes", Toast.LENGTH_LONG).show()
+            val intent = Intent(this, SettingsActivity::class.java)
+            this.startActivity(intent)
+            return true
         } else if (id == R.id.action_exit) {
             this.finish()
             return true
