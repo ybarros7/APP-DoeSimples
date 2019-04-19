@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.SearchView
 import android.widget.Toast
+import br.com.pipasdevteam.doesimples.util.NavigationItemSelected
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -25,6 +26,10 @@ class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigati
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_instituicoes)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //Navigation Drawer
         configuraMenuLateral()
@@ -115,8 +120,9 @@ class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigati
             this.startActivity(intent)
             return true
         } else if (id == R.id.action_exit) {
-            this.finish()
-            return true
+            val i = Intent(this, LoginActivity::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(i)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -131,20 +137,7 @@ class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigati
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_instituicoes -> {
-                Toast.makeText(this, "Clicou Instituições", Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_quem_somos -> {
-                Toast.makeText(this, "Clicou Quem Somos", Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_listagem_filtrada -> {
-                Toast.makeText(this, "Clicou Listagem Filtrada", Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_config -> {
-                Toast.makeText(this, "Clicou Config", Toast.LENGTH_SHORT).show()
-            }
-        }
+        NavigationItemSelected(this,item)
 // fecha menu depois de tratar o evento
         val drawer = findViewById<DrawerLayout>(R.id.layourMenuLateral)
         drawer.closeDrawer(GravityCompat.START)

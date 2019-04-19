@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private fun Logar() {
         if (validarLogin()) {
             Toast.makeText(this, "Bem Vindo Usuario", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, ListaInstituicoesActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
 
             intent.putExtra("user", editUser.text.toString())
             startActivity(intent)
