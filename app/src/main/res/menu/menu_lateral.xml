@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_instituicoes"
+            android:checked="true"
+            android:icon="@drawable/donation"
+            android:title="Instituições" />
+        <item
+            android:id="@+id/nav_listagem_filtrada"
+            android:icon="@drawable/ic_forum_black"
+            android:title="Listagem Filtrada" />
+        <item
+            android:id="@+id/nav_quem_somos"
+            android:icon="@drawable/ic_chat_black"
+            android:title="Quem Somos" />
+
+        <item
+            android:id="@+id/nav_config"
+            android:icon="@drawable/ic_configuracoes_black"
+            android:title="Configurações" />
+
+    </group>
+</menu>

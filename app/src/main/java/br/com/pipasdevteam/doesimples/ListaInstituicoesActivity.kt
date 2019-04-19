@@ -3,27 +3,57 @@ package br.com.pipasdevteam.doesimples
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.NavigationView
+import android.support.v4.view.GravityCompat
+import android.support.v4.widget.DrawerLayout
+import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.SearchView
 import android.widget.Toast
 import java.util.*
 import kotlin.concurrent.schedule
-import android.support.v4.view.MenuItemCompat.getActionView
-import android.widget.SearchView
 
 
-class ListaInstituicoesActivity : AppCompatActivity() {
+class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_instituicoes)
 
+        //Navigation Drawer
+        configuraMenuLateral()
+
         //Lista
         val listaInstView = findViewById<ListView>(R.id.lista_instituicoes)
-        val instituicoes = listOf("Instituicao A", "Instituicao B", "Instituicao C")
+        val instituicoes = listOf(
+            "Instituicao A",
+            "Instituicao B",
+            "Instituicao C",
+            "Instituicao A",
+            "Instituicao B",
+            "Instituicao C",
+            "Instituicao A",
+            "Instituicao B",
+            "Instituicao C",
+            "Instituicao A",
+            "Instituicao B",
+            "Instituicao C",
+            "Instituicao A",
+            "Instituicao B",
+            "Instituicao C",
+            "Instituicao A",
+            "Instituicao B",
+            "Instituicao C",
+            "Instituicao A",
+            "Instituicao B",
+            "Instituicao C"
+        )
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, instituicoes)
 
         listaInstView.adapter = adapter
@@ -34,6 +64,23 @@ class ListaInstituicoesActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun configuraMenuLateral() {
+        var toolbar = findViewById<Toolbar>(R.id.toolbar)
+        var menuLateral = findViewById<DrawerLayout>(R.id.layourMenuLateral)
+// ícone de menu (hamburger) para mostrar o menu
+        var toogle = ActionBarDrawerToggle(
+            this,
+            menuLateral,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        menuLateral.addDrawerListener(toogle)
+        toogle.syncState()
+        val navigationView = findViewById<NavigationView>(R.id.menu_lateral)
+        navigationView.setNavigationItemSelectedListener(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -81,5 +128,26 @@ class ListaInstituicoesActivity : AppCompatActivity() {
             dialog.dismiss()
 
         }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_instituicoes -> {
+                Toast.makeText(this, "Clicou Instituições", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_quem_somos -> {
+                Toast.makeText(this, "Clicou Quem Somos", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_listagem_filtrada -> {
+                Toast.makeText(this, "Clicou Listagem Filtrada", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_config -> {
+                Toast.makeText(this, "Clicou Config", Toast.LENGTH_SHORT).show()
+            }
+        }
+// fecha menu depois de tratar o evento
+        val drawer = findViewById<DrawerLayout>(R.id.layourMenuLateral)
+        drawer.closeDrawer(GravityCompat.START)
+        return true
     }
 }
