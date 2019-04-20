@@ -11,24 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".FilterInstituicao"></activity>
         <activity
             android:name=".QuemSomosActivity"
             android:theme="@style/AppTheme.Toolbar" />
-
         <activity android:name=".SettingsActivity" />
-
         <activity
             android:name=".DetailInstituicaoActivity"
             android:parentActivityName=".ListaInstituicoesActivity"
             android:theme="@style/AppTheme.Toolbar" />
-
         <activity
             android:name=".ListaInstituicoesActivity"
             android:theme="@style/AppTheme.Toolbar" />
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
