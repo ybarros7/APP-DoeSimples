@@ -6,10 +6,12 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import br.com.pipasdevteam.doesimples.models.Instituicao
 import kotlinx.android.synthetic.main.toolbar.*
 
 class DetailInstituicaoActivity : AppCompatActivity() {
 
+    var instituicao:Instituicao? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_instituicao)
@@ -19,9 +21,9 @@ class DetailInstituicaoActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         val params = intent.extras
-        val nome = params?.getString("inst_name")
+        instituicao = intent.getSerializableExtra("inst") as Instituicao
 //        Toast.makeText(this, "$nome", Toast.LENGTH_SHORT).show()
-        this.supportActionBar!!.title = nome
+        this.supportActionBar!!.title = instituicao!!.instituicao
         val actionBar = supportActionBar
         actionBar!!.setHomeButtonEnabled(true)
         actionBar.setDisplayHomeAsUpEnabled(true)

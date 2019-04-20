@@ -1,6 +1,8 @@
 package br.com.pipasdevteam.doesimples.models
 
-class Instituicao {
+import java.io.Serializable
+
+class Instituicao : Serializable {
     var id:Int = 0
     var instituicao = ""
     var endereco = ""

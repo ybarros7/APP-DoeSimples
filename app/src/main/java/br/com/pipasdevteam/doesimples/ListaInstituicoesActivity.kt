@@ -72,6 +72,9 @@ class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigati
     private fun onClickInstituicao(inst: Instituicao) {
         Toast.makeText(context, "Clicou em ${inst.instituicao}", Toast.LENGTH_SHORT)
             .show()
+        val intent = Intent(context, DetailInstituicaoActivity::class.java)
+        intent.putExtra("inst", inst)
+        startActivity(intent)
     }
 
     private fun configuraMenuLateral() {
