@@ -1,5 +1,6 @@
 package br.com.pipasdevteam.doesimples
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -8,9 +9,21 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import android.view.View
+import android.widget.ImageView
 import br.com.pipasdevteam.doesimples.util.NavigationItemSelected
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_login.*
 
-class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+    override fun onClick(view: View?) {
+
+        val id = view?.id
+        if (id == R.id.buttonListInst) {
+            val intent = Intent(this, ListaInstituicoesActivity::class.java)
+            this.startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +34,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         configuraMenuLateral()
+
+        val imagem = findViewById<ImageView>(R.id.logo_doe_simples)
+        imagem.setImageResource(R.drawable.doe_simples_logo)
+
+        buttonListInst.setOnClickListener(this)
     }
 
     private fun configuraMenuLateral() {
@@ -41,7 +59,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        NavigationItemSelected(this,item)
+        NavigationItemSelected(this, item)
 // fecha menu depois de tratar o evento
         val drawer = findViewById<DrawerLayout>(R.id.layourMenuLateralHome)
         drawer.closeDrawer(GravityCompat.START)

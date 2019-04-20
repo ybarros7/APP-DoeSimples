@@ -11,8 +11,59 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <include layout="@layout/toolbar" />
+
+        <RelativeLayout
+            android:id="@+id/sobre_n_s"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:id="@+id/ajudando_in"
+                android:layout_width="224dp"
+                android:layout_height="84dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="34dp"
+                android:gravity="center_horizontal|top"
+                android:text="@string/ajudando_in"
+                android:textAppearance="@style/ajudando_in" />
+
+            <ImageView
+                android:id="@+id/logo_doe_simples"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="131dp" />
+
+            <!-- layout/*.xml -->
+            <TextView
+                android:id="@+id/como_eu_pos"
+                android:layout_width="175dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="263dp"
+                android:gravity="center_horizontal|top"
+                android:text="@string/como_eu_pos"
+                android:textAppearance="@style/como_eu_pos" />
+
+            <Button
+                android:id="@+id/buttonListInst"
+                android:layout_width="118dp"
+                android:layout_height="34dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="321dp"
+                android:background="@drawable/round_btn"
+                android:text="Instituições"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="12sp" />
+        </RelativeLayout>
 
     </LinearLayout>
 

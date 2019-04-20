@@ -21,7 +21,7 @@ class DetailInstituicaoActivity : AppCompatActivity() {
         val params = intent.extras
         val nome = params?.getString("inst_name")
 //        Toast.makeText(this, "$nome", Toast.LENGTH_SHORT).show()
-        this.toolbar!!.title = nome
+        this.supportActionBar!!.title = nome
         val actionBar = supportActionBar
         actionBar!!.setHomeButtonEnabled(true)
         actionBar.setDisplayHomeAsUpEnabled(true)
