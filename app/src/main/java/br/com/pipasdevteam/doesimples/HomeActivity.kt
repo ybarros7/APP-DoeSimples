@@ -13,7 +13,6 @@ import android.view.View
 import android.widget.ImageView
 import br.com.pipasdevteam.doesimples.util.NavigationItemSelected
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_login.*
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     override fun onClick(view: View?) {
@@ -43,7 +42,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun configuraMenuLateral() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        val menuLateral = findViewById<DrawerLayout>(R.id.layourMenuLateralHome)
+        val menuLateral = findViewById<DrawerLayout>(R.id.layoutMenuLateralHome)
 // ícone de menu (hamburger) para mostrar o menu
         val toogle = ActionBarDrawerToggle(
             this,
@@ -61,7 +60,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         NavigationItemSelected(this, item)
 // fecha menu depois de tratar o evento
-        val drawer = findViewById<DrawerLayout>(R.id.layourMenuLateralHome)
+        val drawer = findViewById<DrawerLayout>(R.id.layoutMenuLateralHome)
         drawer.closeDrawer(GravityCompat.START)
         return true
     }

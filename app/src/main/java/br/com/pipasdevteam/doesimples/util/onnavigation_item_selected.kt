@@ -30,7 +30,11 @@ fun NavigationItemSelected(context: Activity, item: MenuItem) {
             }
         }
         R.id.nav_listagem_filtrada -> {
-            Toast.makeText(context, "Clicou Listagem Filtrada", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(context, "Clicou Listagem Filtrada", Toast.LENGTH_SHORT).show()
+            if (context.localClassName != "FilterInstituicao") {
+                val intent = Intent(context, FilterInstituicao::class.java)
+                context.startActivity(intent)
+            }
         }
         R.id.nav_config -> {
 //            Toast.makeText(context, "Clicou Config", Toast.LENGTH_SHORT).show()
