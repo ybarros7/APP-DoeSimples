@@ -26,9 +26,9 @@ class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigati
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_instituicoes)
-
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+        this.supportActionBar!!.title = "Instituições"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //Navigation Drawer

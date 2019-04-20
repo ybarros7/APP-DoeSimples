@@ -11,4 +11,7 @@
     <string name="action_sair">Sair</string>
     <string name="navigation_drawer_open">Abrir</string>
     <string name="navigation_drawer_close">Fechar</string>
+    <string name="pipas_foi_f">Pipas foi fundada em 2018 na cidade São Paulo por cinco alunos da Faculdade Impacta de Tecnologia. Nossa missão é fazer a comunicação entre doadores e instituições de caridade, visando facilitar o gerenciamento e a comunicação das instituições com possíveis doadores.</string>
+    <string name="nossa_equip">NOSSA EQUIPE</string>
+    <string name="members"></string>
 </resources>
