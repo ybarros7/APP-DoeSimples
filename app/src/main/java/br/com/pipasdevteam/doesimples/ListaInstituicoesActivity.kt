@@ -1,6 +1,7 @@
 package br.com.pipasdevteam.doesimples
 
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -8,6 +9,9 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
@@ -15,6 +19,9 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.SearchView
 import android.widget.Toast
+import br.com.pipasdevteam.doesimples.adapters.InstituicaoAdapter
+import br.com.pipasdevteam.doesimples.models.Instituicao
+import br.com.pipasdevteam.doesimples.services.InstituicaoService
 import br.com.pipasdevteam.doesimples.util.NavigationItemSelected
 import java.util.*
 import kotlin.concurrent.schedule
@@ -22,6 +29,9 @@ import kotlin.concurrent.schedule
 
 class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    private val context: Context get() = this
+    private var instituicoes = listOf<Instituicao>()
+    var recyclerInstituicoes: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,40 +45,33 @@ class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigati
         configuraMenuLateral()
 
         //Lista
-        val listaInstView = findViewById<ListView>(R.id.lista_instituicoes)
-        val instituicoes = listOf(
-            "Instituicao A",
-            "Instituicao B",
-            "Instituicao C",
-            "Instituicao A",
-            "Instituicao B",
-            "Instituicao C",
-            "Instituicao A",
-            "Instituicao B",
-            "Instituicao C",
-            "Instituicao A",
-            "Instituicao B",
-            "Instituicao C",
-            "Instituicao A",
-            "Instituicao B",
-            "Instituicao C",
-            "Instituicao A",
-            "Instituicao B",
-            "Instituicao C",
-            "Instituicao A",
-            "Instituicao B",
-            "Instituicao C"
-        )
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, instituicoes)
+        recyclerInstituicoes = findViewById<RecyclerView>(R.id.recyclerInstituicoes)
+        recyclerInstituicoes?.layoutManager = LinearLayoutManager(context)
+        recyclerInstituicoes?.itemAnimator = DefaultItemAnimator()
+        recyclerInstituicoes?.setHasFixedSize(true)
 
-        listaInstView.adapter = adapter
-        listaInstView.setOnItemClickListener { parent, view, position, id ->
+/*        listaInstView.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(this, DetailInstituicaoActivity::class.java)
             intent.putExtra("inst_name", instituicoes[position])
             this.startActivity(intent)
-        }
+        }*/
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        taskInstituicoes()
+    }
+
+    private fun taskInstituicoes() {
+        instituicoes = InstituicaoService.getInstituicoes(context)
+        recyclerInstituicoes?.adapter = InstituicaoAdapter(instituicoes) { onClickInstituicao(it) }
+    }
+
+    private fun onClickInstituicao(inst: Instituicao) {
+        Toast.makeText(context, "Clicou em ${inst.instituicao}", Toast.LENGTH_SHORT)
+            .show()
     }
 
     private fun configuraMenuLateral() {
@@ -137,7 +140,7 @@ class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigati
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        NavigationItemSelected(this,item)
+        NavigationItemSelected(this, item)
 // fecha menu depois de tratar o evento
         val drawer = findViewById<DrawerLayout>(R.id.layourMenuLateral)
         drawer.closeDrawer(GravityCompat.START)

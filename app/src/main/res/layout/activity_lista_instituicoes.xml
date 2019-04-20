@@ -14,11 +14,22 @@
         <include layout="@layout/toolbar" />
 
 
-        <view
-            android:id="@+id/lista_instituicoes"
-            class="android.support.v7.app.AlertController$RecycleListView"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+            <!-- Colocar cardview com as disciplinas-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerInstituicoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="@android:color/transparent"
+                android:clipToPadding="false"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:listSelector="@android:color/transparent"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
+        </ScrollView>
 
     </LinearLayout>
 
