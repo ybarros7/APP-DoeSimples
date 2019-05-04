@@ -65,8 +65,12 @@ class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigati
     }
 
     private fun taskInstituicoes() {
-        instituicoes = InstituicaoService.getInstituicoes(context)
-        recyclerInstituicoes?.adapter = InstituicaoAdapter(instituicoes) { onClickInstituicao(it) }
+        Thread {
+            this.instituicoes = InstituicaoService.getInstituicoes(context)
+            runOnUiThread {
+                recyclerInstituicoes?.adapter = InstituicaoAdapter(instituicoes) { onClickInstituicao(it) }
+            }
+        }.start()
     }
 
     private fun onClickInstituicao(inst: Instituicao) {
@@ -78,10 +82,10 @@ class ListaInstituicoesActivity : AppCompatActivity(), NavigationView.OnNavigati
     }
 
     private fun configuraMenuLateral() {
-        var toolbar = findViewById<Toolbar>(R.id.toolbar)
-        var menuLateral = findViewById<DrawerLayout>(R.id.layourMenuLateral)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val menuLateral = findViewById<DrawerLayout>(R.id.layourMenuLateral)
 // ícone de menu (hamburger) para mostrar o menu
-        var toogle = ActionBarDrawerToggle(
+        val toogle = ActionBarDrawerToggle(
             this,
             menuLateral,
             toolbar,

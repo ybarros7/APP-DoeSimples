@@ -32,7 +32,7 @@ class InstituicaoAdapter(private val instituicoes: List<Instituicao>, val onClic
         holder.cardNome.text = instituicao.instituicao
         holder.cardProgress.visibility = View.VISIBLE
 // download da imagem
-        Picasso.with(context).load(instituicao.foto).fit().into(holder.cardImg,
+        Picasso.with(context).load("https://butterflyeffectbethechange.com/wp-content/uploads/2016/01/Casa-de-Amparo.jpg").fit().into(holder.cardImg,
 
             object : com.squareup.picasso.Callback {
                 override fun onSuccess() {

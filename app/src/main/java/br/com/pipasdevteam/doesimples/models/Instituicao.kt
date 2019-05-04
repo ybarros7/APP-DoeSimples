@@ -7,8 +7,7 @@ class Instituicao : Serializable {
     var instituicao = ""
     var endereco = ""
     var bairro = ""
-    var lat = ""
-    var lon = ""
+    var lat_long = ""
     var foto = ""
 
     override fun toString(): String {

@@ -1,22 +1,32 @@
 package br.com.pipasdevteam.doesimples.services
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.util.Log
+import br.com.pipasdevteam.doesimples.AndroidUtils
+import br.com.pipasdevteam.doesimples.HttpHelper
 import br.com.pipasdevteam.doesimples.models.Instituicao
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.net.URL
 
 object InstituicaoService {
+    val host = "https://doesimples.ga/api"
     fun getInstituicoes(context: Context): List<Instituicao> {
-        val instituicoes = mutableListOf<Instituicao>()
-        for (i in 1..10) {
-            val inst = Instituicao()
-            inst.id = i
-            inst.instituicao = "Instituição $i"
-            inst.bairro = "Bairro"
-            inst.endereco = "Endereço $i"
-            inst.lat = (i * i).toString()
-            inst.lon = (i * i).toString()
-            inst.foto = "https://butterflyeffectbethechange.com/wp-content/uploads/2016/01/Casa-de-Amparo.jpg"
-            instituicoes.add(inst)
+        if (AndroidUtils.isInternetDisponivel(context)) {
+            val url = "$host/instituicao/"
+            val json = HttpHelper.get(url)
+            Log.d(TAG, json)
+            return parserJson<List<Instituicao>>(json)
+        } else {
+            return ArrayList<Instituicao>()
         }
-        return instituicoes
+
+    }
+
+    inline fun <reified T> parserJson(json: String): T {
+        val type = object : TypeToken<T>() {}.type
+        val x = Gson().fromJson<T>(json, type)
+        return x
     }
 }
