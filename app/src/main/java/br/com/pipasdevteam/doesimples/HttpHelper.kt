@@ -48,8 +48,7 @@ object HttpHelper {
         if (body != null) {
             val json = body.string()
             Log.d(TAG, "  << : $json")
-            val result = JSONObject(json).get("results").toString()
-            return result
+            return json
         }
         throw IOException("Erro na requisição")
     }

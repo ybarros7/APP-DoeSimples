@@ -8,6 +8,7 @@ import br.com.pipasdevteam.doesimples.HttpHelper
 import br.com.pipasdevteam.doesimples.models.Instituicao
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import org.json.JSONObject
 import java.net.URL
 
 object InstituicaoService {
@@ -17,16 +18,17 @@ object InstituicaoService {
             val url = "$host/instituicao/"
             val json = HttpHelper.get(url)
             Log.d(TAG, json)
-            return parserJson<List<Instituicao>>(json)
+            val result = JSONObject(json).get("results").toString()
+            return parserJson<List<Instituicao>>(result)
         } else {
             return ArrayList<Instituicao>()
         }
 
     }
 
-    inline fun <reified T> parserJson(json: String): T {
+    inline fun <reified T> parserJson(result: String): T {
         val type = object : TypeToken<T>() {}.type
-        val x = Gson().fromJson<T>(json, type)
+        val x = Gson().fromJson<T>(result, type)
         return x
     }
 }
