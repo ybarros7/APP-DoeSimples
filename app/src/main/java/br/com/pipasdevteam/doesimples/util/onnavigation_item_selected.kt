@@ -36,6 +36,13 @@ fun NavigationItemSelected(context: Activity, item: MenuItem) {
                 context.startActivity(intent)
             }
         }
+        R.id.nav_cadastrar_instituicao -> {
+            Toast.makeText(context, "Clicou Cadastrar Doação", Toast.LENGTH_SHORT).show()
+            if (context.localClassName != "CadastrarInstActivity") {
+                val intent = Intent(context, CadastrarInstActivity::class.java)
+                context.startActivity(intent)
+            }
+        }
         R.id.nav_config -> {
 //            Toast.makeText(context, "Clicou Config", Toast.LENGTH_SHORT).show()
             if (context.localClassName != "SettingsActivity") {

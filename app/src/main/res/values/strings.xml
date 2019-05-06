@@ -16,6 +16,10 @@
     <string name="members"></string>
     <string name="ajudando_in">Ajudando instituições a garantirem um futuro melhor para as crianças que mais precisam dele.</string>
     <string name="como_eu_pos">Como eu posso ajudar?</string>
-
-
+    <string name="nome">Nome</string>
+    <string name="telefone">Telefone</string>
+    <string name="instituicao">Instituição</string>
+    <string name="tipo">Tipo de Doação</string>
+    <string name="doacao">Doação</string>
+    <string name="Cadastrar">Cadastrar</string>
 </resources>

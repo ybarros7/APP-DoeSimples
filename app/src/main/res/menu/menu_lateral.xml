@@ -29,6 +29,10 @@
             android:id="@+id/nav_exit"
             android:icon="@drawable/baseline_exit_to_app_black_18dp"
             android:title="Sair" />
+        <item
+            android:id="@+id/nav_cadastrar_instituicao"
+            android:icon="@drawable/ic_forum_black"
+            android:title="Cadastro de Instituição" />
 
     </group>
 </menu>

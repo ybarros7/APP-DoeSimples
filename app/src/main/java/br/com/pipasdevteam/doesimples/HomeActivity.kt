@@ -22,6 +22,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val intent = Intent(this, ListaInstituicoesActivity::class.java)
             this.startActivity(intent)
         }
+        if (id == R.id.buttonCadInst) {
+            val intent = Intent(this, CadastrarInstActivity::class.java)
+            this.startActivity(intent)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +42,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         imagem.setImageResource(R.drawable.doe_simples_logo)
 
         buttonListInst.setOnClickListener(this)
+        buttonCadInst.setOnClickListener(this)
     }
 
     private fun configuraMenuLateral() {
